@@ -2,6 +2,21 @@ import pandas as pd
 import streamlit as st
 import random as rd
 
+#順位付け
+def skill(sex, team):
+    if   team == "A":
+        return 10 + 0.2 * rd.gauss()
+    elif team == "B":
+        return  8 + 0.3 * rd.gauss()
+    elif team == "C":
+        return  6 + 0.7 * rd.gauss()
+    elif team == "D":
+        return  3 + 1.0 * rd.gauss()
+    elif team == "E":
+        return  1 + 0.7 * rd.gauss()
+    else:
+        return      0.3 * rd.gauss()
+
 st.title("松浦優勝")
 
 # pandasで名簿作成
@@ -17,19 +32,4 @@ if st.button("OK"):
     df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
     df.sort_values(by="power", ascending=False, inplace=True)
     st.write(df)
-
-#順位付け
-def skill(sex, team):
-    if   team == "A":
-        return 10 + 0.2 * rd.gauss()
-    elif team == "B":
-        return  8 + 0.3 * rd.gauss()
-    elif team == "C":
-        return  6 + 0.7 * rd.gauss()
-    elif team == "D":
-        return  3 + 1.0 * rd.gauss()
-    elif team == "E":
-        return  1 + 0.7 * rd.gauss()
-    else:
-        return      0.3 * rd.gauss()
 
