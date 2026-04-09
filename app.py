@@ -7,11 +7,19 @@ name = st.text_input("名前を入力してください")
 if name:
     st.write(f"こんにちは、{name}さん！")
 
-present_students = []
-students = ["佐藤", "鈴木", "高橋", "田中", "伊藤"]
+# 左右2列に分割
+col1, col2 = st.columns(2)
 
-for student in students:
-    if st.checkbox(student):
-        present_students.append(student)
+students = [f"学生{i}" for i in range(1, 71)]
+selected_students = []
 
-st.write("出席者:", present_students)
+
+for student in students[:35]:
+    if col1.checkbox(student):
+        selected_students.append(student)
+
+for student in students[35:]:
+    if col2.checkbox(student):
+        selected_students.append(student)
+
+st.write(f"出席者（人数: {len(selected_students)}）:")
