@@ -18,7 +18,12 @@ def skill(sex, team):
         return      0.8 * rd.gauss()
 
 st.title("松浦優勝")
+import streamlit as st
 
+st.title("整数入力ボックス")
+
+# 1~30 の整数を入力
+num = st.number_input("台数", value=1, step=1)
 t = st.number_input("台数")
 t = int(t)
 
@@ -34,15 +39,13 @@ if st.button("OK"):
     df = df[attendance]
     df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
     df.sort_values(by="power", ascending=False, inplace=True)
-    st.write(df)
     present = list(df["name"])
     n = len(present)
     a = n // t
     b = n  % t
     table = [a] * (t-b) + [a+1] * b
 
-    st.write(table)
-
+    #表示
     start = 0
     for ai in table:
       row_elements = present[start:start+ai]
