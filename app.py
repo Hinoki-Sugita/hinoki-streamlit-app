@@ -7,19 +7,19 @@ name = st.text_input("名前を入力してください")
 if name:
     st.write(f"こんにちは、{name}さん！")
 
-# 左右2列に分割
-col1, col2 = st.columns(2)
+import streamlit as st
+import pandas as pd
 
-students = [f"学生{i}" for i in range(1, 61)]
-selected_students = []
+st.title("出席チェックアプリ（スマホ対応）")
 
+# 名簿作成（学生1～70）
+students = [f"学生{i}" for i in range(1, 71)]
 
-for student in students[:35]:
-    if col1.checkbox(student):
-        selected_students.append(student)
+# マルチセレクトで出席者を選択
+selected_students = st.multiselect(
+    "出席した人を選択してください（検索可）",
+    options=students
+)
 
-for student in students[35:]:
-    if col2.checkbox(student):
-        selected_students.append(student)
-
-st.write(f"出席者（人数: {len(selected_students)}）:")
+# 選択人数を表示
+st.write(f"出席人数: {len(selected_students)}")
