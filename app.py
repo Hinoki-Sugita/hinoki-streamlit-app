@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import random as rd
+import openpyxl as pl
 
 st.title("出席チェック")
 
@@ -8,10 +9,10 @@ st.title("出席チェック")
 df = pd.read_excel("members.xlsx")
 
 
-selected = st.multiselect("出席者", options=df["名前"])
+selected = st.multiselect("出席者", options=df["name"])
 
 if st.button("OK"):
-    attendance = [name in selected for name in df["名前"]]
+    attendance = [name in selected for name in df["name"]]
     df = df[attendance]
 
 st.write(df)
