@@ -17,15 +17,9 @@ def skill(sex, team):
     else:
         return      0.8 * rd.gauss()
 
-st.title("松浦優勝")
-import streamlit as st
-
-st.title("整数入力ボックス")
-
 # 1~30 の整数を入力
 num = st.number_input("台数", value=1, step=1)
-t = st.number_input("台数")
-t = int(t)
+t = int(num)
 
 # pandasで名簿作成
 df = pd.read_excel("members.xlsx", engine = "openpyxl")
