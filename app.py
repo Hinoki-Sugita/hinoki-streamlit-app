@@ -1,13 +1,17 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
+import random as rd
 
-st.title("松浦優勝")
+st.title("出席チェック")
 
-# 名簿
-students = [f"学生{i}" for i in range(1, 71)]
+# pandasで名簿作成
+df = pd.read_excel("roster.xlsx")
 
-# マルチセレクト
-selected_students = st.multiselect("出席",options=students)
+selected = st.multiselect("出席者", options=df["名前"])
 
-# 選択人数
-st.write(f"出席人数: {len(selected_students)}")
+if st.button("OK"):
+    attendance = [name in selected for name in df["名前"]]
+    df = df[attendance]
+
+st.write(df)
+
