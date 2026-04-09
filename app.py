@@ -5,19 +5,21 @@ import random as rd
 #順位付け
 def skill(sex, team):
     if   team == "A":
-        return 10 + 0.2 * rd.gauss()
+        return 10 + 0.4 * rd.gauss()
     elif team == "B":
-        return  8 + 0.3 * rd.gauss()
+        return  8 + 0.6 * rd.gauss()
     elif team == "C":
-        return  6 + 0.7 * rd.gauss()
+        return  6 + 0.9 * rd.gauss()
     elif team == "D":
-        return  3 + 1.0 * rd.gauss()
+        return  3 + 1.2 * rd.gauss()
     elif team == "E":
-        return  1 + 0.7 * rd.gauss()
+        return  1 + 0.9 * rd.gauss()
     else:
-        return      0.3 * rd.gauss()
+        return      0.9 * rd.gauss()
 
 st.title("松浦優勝")
+
+t = st.number_input("台数")
 
 # pandasで名簿作成
 df = pd.read_excel("members.xlsx", engine = "openpyxl")
@@ -32,4 +34,11 @@ if st.button("OK"):
     df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
     df.sort_values(by="power", ascending=False, inplace=True)
     st.write(df)
+    present = list(df["name"])
+    n = len(present)
+    a = n // t
+    b = n  % t
+    table = [a] * (t-b) + [a+1] * b
+    
+
 
