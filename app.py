@@ -14,24 +14,22 @@ selected = st.multiselect("出席者", options=df["name"])
 if st.button("OK"):
     attendance = [name in selected for name in df["name"]]
     df = df[attendance]
+    df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
+    df.sort_values(by="power", ascending=False, inplace=True)
+    st.write(df)
 
 #順位付け
 def skill(sex, team):
     if   team == "A":
-        return 10 + 0.1 * rd.gauss()
+        return 10 + 0.2 * rd.gauss()
     elif team == "B":
-        return  8 + 0.2 * rd.gauss()
+        return  8 + 0.3 * rd.gauss()
     elif team == "C":
-        return  6 + 0.5 * rd.gauss()
+        return  6 + 0.7 * rd.gauss()
     elif team == "D":
-        return  3 + 0.8 * rd.gauss()
+        return  3 + 1.0 * rd.gauss()
     elif team == "E":
-        return  1 + 0.5 * rd.gauss()
+        return  1 + 0.7 * rd.gauss()
     else:
         return      0.3 * rd.gauss()
-
-df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
-df.sort_values(by="power", ascending=False, inplace=True)
-
-st.write(df)
 
