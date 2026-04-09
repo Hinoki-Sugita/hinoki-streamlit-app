@@ -38,6 +38,7 @@ if st.button("OK"):
     a = n // t
     b = n  % t
     table = [a] * (t-b) + [a+1] * b
+    rd.shuffle(table)
 
     #表示
     start = 0
