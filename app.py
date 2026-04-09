@@ -15,6 +15,8 @@ if st.button("OK"):
     attendance = [name in selected for name in df["name"]]
     df = df[attendance]
 
+print(df)
+
 #順位付け
 def skill(sex, team):
     if   team == "A":
