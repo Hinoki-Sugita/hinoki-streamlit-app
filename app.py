@@ -5,7 +5,8 @@ import random as rd
 st.title("出席チェック")
 
 # pandasで名簿作成
-df = pd.read_excel("member.xlsx")
+df = pd.read_excel("members.xlsx")
+
 
 selected = st.multiselect("出席者", options=df["名前"])
 
