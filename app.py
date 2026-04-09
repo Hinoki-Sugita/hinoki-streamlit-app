@@ -37,11 +37,11 @@ if st.button("OK"):
     st.write(df)
     present = list(df["name"])
     n = len(present)
-    st.write(t)
-    st.write(n)
     a = n // t
     b = n  % t
     table = [a] * (t-b) + [a+1] * b
+
+    st.write(table)
     
 
 
