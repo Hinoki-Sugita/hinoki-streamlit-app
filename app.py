@@ -10,7 +10,7 @@ if name:
 # 左右2列に分割
 col1, col2 = st.columns(2)
 
-students = [f"学生{i}" for i in range(1, 71)]
+students = [f"学生{i}" for i in range(1, 61)]
 selected_students = []
 
 
