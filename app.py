@@ -44,7 +44,7 @@ if st.button("OK"):
     st.write(table)
 
     start = 0
-    for ai in a:
-      row_elements = b[start:start+ai]
+    for ai in table:
+      row_elements = present[start:start+ai]
       st.write(*row_elements)
       start += ai
