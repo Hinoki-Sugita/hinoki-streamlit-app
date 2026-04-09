@@ -15,8 +15,6 @@ if st.button("OK"):
     attendance = [name in selected for name in df["name"]]
     df = df[attendance]
 
-print(df)
-
 #順位付け
 def skill(sex, team):
     if   team == "A":
@@ -35,5 +33,5 @@ def skill(sex, team):
 df["power"] = df.apply(lambda row: skill(row["sex"], row["team"]), axis=1)
 df.sort_values(by="power", ascending=False, inplace=True)
 
-print(df)
+st.write(df)
 
