@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import random as rd
-import openpyxl as pl
 
 st.title("出席チェック")
 
