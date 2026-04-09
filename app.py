@@ -5,9 +5,9 @@ import random as rd
 #順位付け
 def skill(sex, team):
     if   team == "A":
-        return 10 + 0.5 * rd.gauss()
+        return 10 + 1.0 * rd.gauss()
     elif team == "B":
-        return  8 + 0.7 * rd.gauss()
+        return  8 + 1.0 * rd.gauss()
     elif team == "C":
         return  6 + 1.0 * rd.gauss()
     elif team == "D":
@@ -42,6 +42,9 @@ if st.button("OK"):
     table = [a] * (t-b) + [a+1] * b
 
     st.write(table)
-    
 
-
+    start = 0
+    for ai in a:
+      row_elements = b[start:start+ai]
+      st.write(*row_elements)
+      start += ai
