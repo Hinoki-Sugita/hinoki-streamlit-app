@@ -4,22 +4,37 @@ import random as rd
 
 #順位付け
 def skill(sex, team):
-    if   team == "A":
-        return 10 + 1.0 * rd.gauss()
-    elif team == "B":
-        return  8 + 1.0 * rd.gauss()
-    elif team == "C":
-        return  6 + 1.0 * rd.gauss()
-    elif team == "D":
-        return  3 + 1.3 * rd.gauss()
-    elif team == "E":
-        return  1 + 1.0 * rd.gauss()
+    if   team == "A" and sex == "M":
+        return 10 + sigma * rd.gauss()
+    elif team == "B" and sex == "M":
+        return  8 + sigma * rd.gauss()
+    elif team == "C" and sex == "M":
+        return  6 + sigma * rd.gauss()
+    elif team == "D" and sex == "M":
+        return  3 + sigma * rd.gauss()
+    elif team == "E" and sex == "M":
+        return  1 + sigma * rd.gauss()
+    elif                 sex == "M":
+        return      sigma * rd.gauss()
+    elif team == "A" and sex == "F":
+        return 10 + sigma * rd.gauss()
+    elif team == "B" and sex == "F":
+        return  7 + sigma * rd.gauss()
+    elif team == "C" and sex == "F":
+        return  5 + sigma * rd.gauss()
+    elif team == "D" and sex == "F":
+        return  2 + sigma * rd.gauss()
+    elif team == "E" and sex == "F":
+        return  1 + sigma * rd.gauss()    
     else:
-        return      0.8 * rd.gauss()
+        return      sigma * rd.gauss()
 
-# 1~30 の整数を入力
+#台数
 num = st.number_input("台数", value=1, step=1)
 t = int(num)
+
+#標準偏差
+sigma = st.number_input("σ", value = 1.0, step = 0.1)
 
 # pandasで名簿作成
 df = pd.read_excel("members.xlsx", engine = "openpyxl")
