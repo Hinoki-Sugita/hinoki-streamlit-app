@@ -46,6 +46,7 @@ selected = st.multiselect("出席者", options=df["name"])
 #広告表示
 image1 = PIL.Image.open("temu1.png")
 image2 = PIL.Image.open("temu2.png")
+image3 = PIL.Image.open("toshu1.png")
 
 # 確定ボタン
 if st.button("OK"):
@@ -67,7 +68,5 @@ if st.button("OK"):
       st.write(*row_elements)
       start += ai
 
-    if rd.random() < 0.5:
-        st.image(image1)
-    else :
-        st.image(image2) 
+    st.image(rd.choice([image1, image2, image3]))
+
