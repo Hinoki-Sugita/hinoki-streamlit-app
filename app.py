@@ -63,5 +63,6 @@ if st.button("OK"):
       st.write(*row_elements)
       start += ai
 
-    image = PIL.Image.open("temu1.jpg")
+    st.write("完了")
+    image = PIL.Image.open("temu1.jpg.png")
     st.image(image)
