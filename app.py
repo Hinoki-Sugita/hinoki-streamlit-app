@@ -43,6 +43,10 @@ df = pd.read_excel("members.xlsx", engine = "openpyxl")
 # 出席確認
 selected = st.multiselect("出席者", options=df["name"])
 
+#広告表示
+image1 = PIL.Image.open("temu1.png")
+image2 = PIL.Image.open("temu2.png")
+
 # 確定ボタン
 if st.button("OK"):
     attendance = [name in selected for name in df["name"]]
@@ -63,6 +67,7 @@ if st.button("OK"):
       st.write(*row_elements)
       start += ai
 
-    st.write("完了")
-    image = PIL.Image.open("temu1.jpg.png")
-    st.image(image)
+    if rd.random() < 0.5:
+        st.image(image1)
+    else :
+        st.image(image2) 
