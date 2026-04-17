@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import random as rd
+import PIL
 
 #順位付け
 def skill(sex, team):
@@ -61,3 +62,6 @@ if st.button("OK"):
       row_elements = present[start:start+ai]
       st.write(*row_elements)
       start += ai
+
+    image = PIL.Image.open("temu1.jpg")
+    st.image(image)
