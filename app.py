@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import random as rd
-import PIL
 
 #順位付け
 def skill(sex, team):
@@ -43,11 +42,6 @@ df = pd.read_excel("members.xlsx", engine = "openpyxl")
 # 出席確認
 selected = st.multiselect("出席者", options=df["name"])
 
-#広告表示
-image1 = PIL.Image.open("temu1.png")
-image2 = PIL.Image.open("temu2.png")
-image3 = PIL.Image.open("toshu1.png")
-
 # 確定ボタン
 if st.button("OK"):
     attendance = [name in selected for name in df["name"]]
@@ -67,6 +61,4 @@ if st.button("OK"):
       row_elements = present[start:start+ai]
       st.write(*row_elements)
       start += ai
-
-    st.image(rd.choice([image1, image2, image3]))
 
