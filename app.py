@@ -11,9 +11,9 @@ def skill(sex, team):
     elif team == "C" and sex == "M":
         return  6 + sigma * rd.gauss()
     elif team == "D" and sex == "M":
-        return  3 + sigma * rd.gauss()
+        return  4 + sigma * rd.gauss()
     elif team == "E" and sex == "M":
-        return  1 + sigma * rd.gauss()
+        return  2 + sigma * rd.gauss()
     elif                 sex == "M":
         return      sigma * rd.gauss()
     elif team == "A" and sex == "F":
